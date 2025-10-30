@@ -1,0 +1,201 @@
+body {
+    font-family: 'Montserrat', sans-serif; /* Fuente más audaz para títulos */
+    line-height: 1.7;
+    color: #f8f9fa; /* Color de texto base claro */
+    background-color: #1a1a2e; /* Fondo oscuro principal */
+    overflow-x: hidden; /* Evitar scroll horizontal por animaciones */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif; /* Fuente para textos del cuerpo */
+    font-weight: 700;
+    color: #e0e0e0;
+}
+
+/* -------------------- General Animations & Effects -------------------- */
+/* Usamos Animate.css, pero también podemos crear nuestras propias clases con @keyframes */
+.animate__fadeIn,
+.animate__fadeInUp,
+.animate__slideInLeft,
+.animate__slideInRight,
+.animate__zoomIn,
+.animate__flipInX,
+.animate__bounceIn,
+.animate__jello,
+.animate__pulse {
+    visibility: hidden; /* Ocultar por defecto para animar la entrada */
+    animation-duration: 1s; /* Duración por defecto */
+    animation-fill-mode: both; /* Mantener estado final de la animación */
+}
+
+/* Clase para activar las animaciones al ser visibles */
+.visible.animate__fadeIn { animation-name: fadeIn; }
+.visible.animate__fadeInUp { animation-name: fadeInUp; }
+.visible.animate__slideInLeft { animation-name: slideInLeft; }
+.visible.animate__slideInRight { animation-name: slideInRight; }
+.visible.animate__zoomIn { animation-name: zoomIn; }
+.visible.animate__flipInX { animation-name: flipInX; }
+.visible.animate__bounceIn { animation-name: bounceIn; }
+.visible.animate__jello { animation-name: jello; }
+.visible.animate__pulse { animation-name: pulse; }
+
+
+/* Delay personalizado para Animate.css */
+.delay-1s { animation-delay: 1s; }
+.delay-2s { animation-delay: 2s; }
+.delay-3s { animation-delay: 3s; }
+
+
+/* Transiciones generales para elementos interactivos */
+.hover-scale {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.hover-scale:hover {
+    transform: scale(1.05); /* Ligeramente más grande */
+    box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3); /* Sombra de neón */
+}
+
+.hover-glow {
+    transition: box-shadow 0.3s ease-in-out;
+}
+.hover-glow:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5); /* Resplandor de neón */
+}
+
+.hover-raise {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.hover-raise:hover {
+    transform: translateY(-10px); /* Se eleva */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Keyframes personalizados (ejemplo) */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* -------------------- Component Specific Styles -------------------- */
+.hero {
+    min-height: 100vh; /* Altura completa de la ventana */
+    background: linear-gradient(135deg, #6a0572 0%, #3e0b51 100%); /* Degradado morado oscuro */
+    position: relative;
+    overflow: hidden; /* Para animaciones de fondo si las hubiera */
+}
+
+.hero::before { /* Efecto de fondo animado (opcional) */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(120, 0, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    animation: rotateBackground 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotateBackground {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.hero h1, .hero p {
+    position: relative; /* Asegurar que el texto esté por encima del pseudo-elemento */
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: #00bcd4; /* Azul cian vibrante */
+    border-color: #00bcd4;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #008ba3;
+    border-color: #008ba3;
+    transform: translateY(-3px); /* Efecto 3D al hacer hover */
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+.section-gradient {
+    background: linear-gradient(45deg, #2e1a47 0%, #1a1a2e 100%); /* Degradado oscuro a más oscuro */
+    color: #e0e0e0;
+}
+
+.section-gradient-rev {
+    background: linear-gradient(45deg, #1a1a2e 0%, #2e1a47 100%); /* Degradado invertido */
+    color: #e0e0e0;
+}
+
+
+.text-shadow {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.lead-lg {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* Estilos para las tarjetas de equipo */
+.team-card {
+    background-color: #2a2a4e;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.team-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 0, 255, 0.5);
+}
+
+/* Estilos para las tarjetas de valores */
+.value-card {
+    background-color: #3b3b6b;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.value-card:hover {
+    background-color: #4c4c8e; /* Color más claro al pasar el ratón */
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.4);
+}
+.value-card h3 {
+    color: #00bcd4;
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #111122 !important; /* Un poco más oscuro */
+    border-top: 1px solid #333;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    .lead-lg {
+        font-size: 1.1rem;
+    }
+    .col-md-6.order-md-1, .col-md-6.order-md-2 {
+        order: unset !important; /* Desactiva el orden inverso en móviles */
+    }
+}
