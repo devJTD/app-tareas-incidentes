@@ -1,0 +1,209 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    color: #e0e0e0; /* Color de texto base claro */
+    background-color: #1a1a2e; /* Fondo oscuro principal */
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #f8f9fa;
+}
+
+/* -------------------- General Animations & Effects -------------------- */
+.animate__fadeIn,
+.animate__fadeInUp,
+.animate__slideInLeft,
+.animate__slideInRight,
+.animate__zoomIn,
+.animate__bounceIn,
+.animate__pulse,
+.animate__flash {
+    visibility: hidden;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.visible.animate__fadeIn { animation-name: fadeIn; }
+.visible.animate__fadeInUp { animation-name: fadeInUp; }
+.visible.animate__slideInLeft { animation-name: slideInLeft; }
+.visible.animate__slideInRight { animation-name: slideInRight; }
+.visible.animate__zoomIn { animation-name: zoomIn; }
+.visible.animate__bounceIn { animation-name: bounceIn; }
+.visible.animate__pulse { animation-name: pulse; animation-iteration-count: infinite; } /* Pulsar infinitamente */
+.visible.animate__flash { animation-name: flash; animation-iteration-count: 3; } /* Flashear 3 veces */
+
+
+/* Delay personalizado para Animate.css */
+.delay-0s { animation-delay: 0s; }
+.delay-1s { animation-delay: 0.5s; } /* Reducido para efecto escalonado más rápido */
+.delay-2s { animation-delay: 1s; }
+.delay-3s { animation-delay: 1.5s; }
+
+
+/* Transiciones & Keyframes Personalizados */
+.hover-lift-glow {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+.hover-lift-glow:hover {
+    transform: translateY(-10px); /* Se eleva ligeramente */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 255, 255, 0.4); /* Sombra y brillo de neón */
+}
+
+.hover-btn-pulse {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-btn-pulse:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.7);
+    animation: buttonPulse 1.5s infinite; /* Animación de pulsación al pasar el ratón */
+}
+
+@keyframes buttonPulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 188, 212, 0); }
+    70% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 188, 212, 0.8); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(0, 188, 212, 0); }
+}
+
+@keyframes pulse { /* Versión para títulos */
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+
+/* -------------------- Component Specific Styles -------------------- */
+.hero-products {
+    min-height: 70vh; /* Un poco menos alto que el "Nosotros" */
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); /* Degradado espacial */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-products::before { /* Estrellas o partículas de fondo */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="0.5" fill="white" /><circle cx="50" cy="70" r="0.8" fill="white" /><circle cx="80" cy="30" r="0.6" fill="white" /><circle cx="10" cy="90" r="0.7" fill="white" /><circle cx="90" cy="10" r="0.9" fill="white" /></svg>') repeat;
+    background-size: 150px;
+    opacity: 0.3;
+    animation: parallaxStars 200s linear infinite;
+    z-index: 0;
+}
+
+@keyframes parallaxStars {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 5000px; }
+}
+
+
+.hero-products h1, .hero-products p {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary {
+    background-color: #00bcd4; /* Azul cian vibrante */
+    border-color: #00bcd4;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #008ba3;
+    border-color: #008ba3;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+.btn-secondary {
+    background-color: #8a2be2; /* Azul violeta */
+    border-color: #8a2be2;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+.btn-secondary:hover {
+    background-color: #6a0572;
+    border-color: #6a0572;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+.btn-outline-info {
+    border-color: #00bcd4;
+    color: #00bcd4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-outline-info:hover {
+    background-color: #00bcd4;
+    color: #1a1a2e;
+}
+
+
+.section-gradient {
+    background: linear-gradient(45deg, #2e1a47 0%, #1a1a2e 100%);
+    color: #e0e0e0;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Estilos para las tarjetas de producto */
+.product-card {
+    background-color: #2a2a4e; /* Fondo oscuro para la tarjeta */
+    border-radius: 15px;
+    overflow: hidden; /* Asegura que la imagen redondeada se vea bien */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    display: flex; /* Para mejor control del contenido */
+    flex-direction: column;
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+}
+
+.product-card .card-body {
+    padding: 1.5rem;
+    flex-grow: 1; /* Permite que el cuerpo ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacia el contenido */
+}
+
+.product-card .card-title {
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.product-card .card-text {
+    color: #b0b0d0;
+    font-size: 0.95rem;
+    flex-grow: 1; /* Permite que el texto ocupe espacio si es más largo */
+}
+
+.product-card .price {
+    color: #00bcd4; /* Color vibrante para el precio */
+    margin-top: 1rem;
+    display: block; /* Para asegurar que el precio esté en su propia línea */
+}
+
+/* Footer */
+footer {
+    background-color: #111122 !important;
+    border-top: 1px solid #333;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .hero-products h1 {
+        font-size: 2.5rem;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+}
